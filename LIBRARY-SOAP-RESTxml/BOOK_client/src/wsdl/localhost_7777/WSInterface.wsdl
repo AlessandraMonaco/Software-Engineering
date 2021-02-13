@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://warehousews.mycompany.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WSImplService" targetNamespace="http://warehousews.mycompany.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://warehousews.mycompany.com/" elementFormDefault="unqualified" targetNamespace="http://warehousews.mycompany.com/" version="1.0">
+
+  <xs:element name="getBookInfos" type="tns:getBookInfos"/>
+
+  <xs:element name="getBookInfosResponse" type="tns:getBookInfosResponse"/>
+
+  <xs:element name="getSellerInfos" type="tns:getSellerInfos"/>
+
+  <xs:element name="getSellerInfosResponse" type="tns:getSellerInfosResponse"/>
+
+  <xs:complexType name="getSellerInfos">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSellerInfosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Seller"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Seller">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="deliveryDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBookInfos">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getBookInfosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:CommercialBook"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CommercialBook">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="price" type="xs:float"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="sellers" nillable="true" type="tns:Seller"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getSellerInfos">
+    <wsdl:part element="tns:getSellerInfos" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookInfos">
+    <wsdl:part element="tns:getBookInfos" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookInfosResponse">
+    <wsdl:part element="tns:getBookInfosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSellerInfosResponse">
+    <wsdl:part element="tns:getSellerInfosResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSInterface">
+    <wsdl:operation name="getSellerInfos">
+      <wsdl:input message="tns:getSellerInfos" name="getSellerInfos">
+    </wsdl:input>
+      <wsdl:output message="tns:getSellerInfosResponse" name="getSellerInfosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookInfos">
+      <wsdl:input message="tns:getBookInfos" name="getBookInfos">
+    </wsdl:input>
+      <wsdl:output message="tns:getBookInfosResponse" name="getBookInfosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSImplServiceSoapBinding" type="tns:WSInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getSellerInfos">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSellerInfos">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSellerInfosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookInfos">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBookInfos">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBookInfosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSImplService">
+    <wsdl:port binding="tns:WSImplServiceSoapBinding" name="WSImplPort">
+      <soap:address location="http://localhost:7777/WSInterface"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
