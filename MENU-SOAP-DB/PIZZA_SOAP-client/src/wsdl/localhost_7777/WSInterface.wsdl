@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://pizza_soapws.mycompany.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WSImplService" targetNamespace="http://pizza_soapws.mycompany.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://pizza_soapws.mycompany.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://pizza_soapws.mycompany.com/">
+  <xs:element name="getDrink" type="tns:getDrink"/>
+  <xs:element name="getDrinkMenu" type="tns:getDrinkMenu"/>
+  <xs:element name="getDrinkMenuResponse" type="tns:getDrinkMenuResponse"/>
+  <xs:element name="getDrinkResponse" type="tns:getDrinkResponse"/>
+  <xs:element name="getFood" type="tns:getFood"/>
+  <xs:element name="getFoodMenu" type="tns:getFoodMenu"/>
+  <xs:element name="getFoodMenuResponse" type="tns:getFoodMenuResponse"/>
+  <xs:element name="getFoodResponse" type="tns:getFoodResponse"/>
+  <xs:element name="getSuggestedMenu" type="tns:getSuggestedMenu"/>
+  <xs:element name="getSuggestedMenuResponse" type="tns:getSuggestedMenuResponse"/>
+  <xs:complexType name="getDrink">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDrinkResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Drink"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Drink">
+    <xs:sequence>
+      <xs:element name="cost" type="xs:float"/>
+      <xs:element minOccurs="0" name="drink" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFoodMenu">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getFoodMenuResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Food"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Food">
+    <xs:sequence>
+      <xs:element name="cost" type="xs:float"/>
+      <xs:element minOccurs="0" name="food" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDrinkMenu">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getDrinkMenuResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Drink"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFood">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFoodResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:Food"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSuggestedMenu">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getSuggestedMenuResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:Menu"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Menu">
+    <xs:sequence>
+      <xs:element name="cost" type="xs:float"/>
+      <xs:element minOccurs="0" name="drink" type="tns:Drink"/>
+      <xs:element minOccurs="0" name="food" type="tns:Food"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClassNotFoundException" type="tns:ClassNotFoundException"/>
+  <xs:complexType name="ClassNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SQLException" type="tns:SQLException"/>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="sQLState" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getDrink">
+    <wsdl:part element="tns:getDrink" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFoodMenu">
+    <wsdl:part element="tns:getFoodMenu" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFoodMenuResponse">
+    <wsdl:part element="tns:getFoodMenuResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SQLException">
+    <wsdl:part element="tns:SQLException" name="SQLException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSuggestedMenuResponse">
+    <wsdl:part element="tns:getSuggestedMenuResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDrinkResponse">
+    <wsdl:part element="tns:getDrinkResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDrinkMenuResponse">
+    <wsdl:part element="tns:getDrinkMenuResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ClassNotFoundException">
+    <wsdl:part element="tns:ClassNotFoundException" name="ClassNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFoodResponse">
+    <wsdl:part element="tns:getFoodResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDrinkMenu">
+    <wsdl:part element="tns:getDrinkMenu" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFood">
+    <wsdl:part element="tns:getFood" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSuggestedMenu">
+    <wsdl:part element="tns:getSuggestedMenu" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSInterface">
+    <wsdl:operation name="getDrink">
+      <wsdl:input message="tns:getDrink" name="getDrink">
+    </wsdl:input>
+      <wsdl:output message="tns:getDrinkResponse" name="getDrinkResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ClassNotFoundException" name="ClassNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFoodMenu">
+      <wsdl:input message="tns:getFoodMenu" name="getFoodMenu">
+    </wsdl:input>
+      <wsdl:output message="tns:getFoodMenuResponse" name="getFoodMenuResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ClassNotFoundException" name="ClassNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDrinkMenu">
+      <wsdl:input message="tns:getDrinkMenu" name="getDrinkMenu">
+    </wsdl:input>
+      <wsdl:output message="tns:getDrinkMenuResponse" name="getDrinkMenuResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ClassNotFoundException" name="ClassNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFood">
+      <wsdl:input message="tns:getFood" name="getFood">
+    </wsdl:input>
+      <wsdl:output message="tns:getFoodResponse" name="getFoodResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ClassNotFoundException" name="ClassNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSuggestedMenu">
+      <wsdl:input message="tns:getSuggestedMenu" name="getSuggestedMenu">
+    </wsdl:input>
+      <wsdl:output message="tns:getSuggestedMenuResponse" name="getSuggestedMenuResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:SQLException" name="SQLException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ClassNotFoundException" name="ClassNotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSImplServiceSoapBinding" type="tns:WSInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getDrink">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDrink">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDrinkResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFoodMenu">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFoodMenu">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFoodMenuResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDrinkMenu">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDrinkMenu">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDrinkMenuResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFood">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFood">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFoodResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSuggestedMenu">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSuggestedMenu">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSuggestedMenuResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SQLException">
+        <soap:fault name="SQLException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ClassNotFoundException">
+        <soap:fault name="ClassNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSImplService">
+    <wsdl:port binding="tns:WSImplServiceSoapBinding" name="WSImplPort">
+      <soap:address location="http://localhost:7777/WSInterface"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
